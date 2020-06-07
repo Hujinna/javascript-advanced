@@ -11,9 +11,11 @@
     <script src="js/jquery.js"></script>
     <script>
       //发起请求
+      // console.log(1);
       var p = new Promise(function (resolve, reject) {
+        // console.log(2);
         $.ajax({
-          url: 'txt/1.txt',
+          url: 'txt/1.txte',
           success: function (data) {
             resolve(data);
           },
@@ -22,21 +24,27 @@
           },
         });
       });
+      // console.log(3);
       console.dir(p);
 
       // //处理数据方法一
-      // p.then(function (data) {
-      //     console.log("成功调用");
-      // }, function () {
-      //     console.log("失败调用");
-      // });
+      // p.then(
+      //   function (data) {
+      //     console.log(data);
+      //     console.log('成功调用');
+      //   },
+      //   function (err) {
+      //     console.log(err);
+      //     console.log('失败调用');
+      //   }
+      // );
 
       // //处理数据方法二
-      // p.then(function (data) {
-      //     console.log("成功调用");
-      // }).catch(function () {
-      //     console.log("失败调用");
-      // });
+      p.then(function (data) {
+        console.log('成功调用');
+      }).catch(function (err) {
+        console.log('失败调用');
+      });
     </script>
   </body>
 </html>

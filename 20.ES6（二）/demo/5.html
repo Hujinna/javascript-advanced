@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script src="js/jquery.js"></script>
     <script>
-        //发起请求
-        var p = new Promise(function (resolve, reject) {
-            $.ajax({
-                url: 'txt/1.txt',
-                success: function (data) {
-                    resolve(data);
-                },
-                error: function (err) {
-                    reject(err);
-                }
-            });
+      //发起请求
+      var p = new Promise(function (resolve, reject) {
+        $.ajax({
+          url: 'txt/1.txt',
+          success: function (data) {
+            resolve(data);
+          },
+          error: function (err) {
+            reject(err);
+          },
         });
+      });
 
-
-        p.then(function (data) {
-            console.log("成功调用");
-        }).catch(function () {
-            console.log("失败调用");
-        }).finally(function(){
-            console.log("成功失败都会输出");
+      p.then(function (data) {
+        console.log('成功调用');
+      })
+        .catch(function () {
+          console.log('失败调用');
         })
+        .finally(function () {
+          console.log('成功失败都会输出');
+        });
     </script>
-</body>
-
+  </body>
 </html>

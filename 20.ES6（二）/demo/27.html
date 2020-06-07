@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      async function async1() {
+        console.log('async1 start'); //2
+        // 执行async2函数的 setTimeout
+        await async2();
+        setTimeout(function () {
+          // 等上面执行完在执行
+          console.log('setTimeout1'); //8
+        }, 0);
+      }
+
+      async function async2() {
+        setTimeout(function () {
+          console.log('setTimeout2'); //7
+        }, 0);
+      }
+      console.log('script start'); //1    //执行同步代码
+
+      setTimeout(function () {
+        // 最后执行setTimeout
+        console.log('setTimeout3'); //6
+      }, 0);
+
+      async1(); //调用
+      //执行先执行同步 输出2
+
+      // 调用
+      // 执行异步setTimeout
+      new Promise(function (resolve, reject) {
+        console.log('Promise1'); //3  //按照代码顺序
+        resolve();
+      }).then(function () {
+        // 等主线任务完成在执行
+        console.log('Promise2'); //5
+      });
+      console.log('script end'); //4
+    </script>
+  </body>
+</html>

@@ -25,6 +25,17 @@
       </table>
     </div>
     <script>
+      //定时器 异步请求
+      var p = new Promise((resolve, reject) => {
+        resolve(1);
+      });
+      p.then((data) => {
+        console.log(data);
+        return 2;
+      }).then((data) => {
+        console.log(data);
+      });
+
       var promise = new Promise(function (resolve, reject) {
         var ajax = new XMLHttpRequest();
         ajax.open('get', './json/data.json', true);
@@ -59,7 +70,8 @@
         })
         .catch(function (err) {
           console.log(err);
-        });
+        })
+        .finally();
     </script>
   </body>
 </html>

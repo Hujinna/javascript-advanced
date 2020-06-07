@@ -19,6 +19,7 @@
       var promise3 = getPromise('value-3', 150);
 
       var promise = Promise.all([promise1, promise2, promise3]);
+
       promise
         .then((result) => {
           console.log('result of promise:', result);

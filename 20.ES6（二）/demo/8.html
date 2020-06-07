@@ -14,8 +14,8 @@
       });
       promise
         .then(() => {
-          //throw new Error('error!!!');
-          return new Error('error!!!');
+          throw new Error('error!!!');
+          // return new Error('error!!!');
         })
         .then((res) => {
           console.log('then: ', res);
